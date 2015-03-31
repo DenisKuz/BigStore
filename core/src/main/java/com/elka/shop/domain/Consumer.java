@@ -8,12 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Table(appliesTo = "user")
-public class User {
+public class Consumer {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private String login;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "first_name")
     private String firstName;
@@ -23,17 +23,6 @@ public class User {
 
     @Column(name = "patronymic")
     private String patronymic;
-
-    @Column(name = "password")
-    private String password;
-
-    public long getId() {
-        return id;
-    }
-
-    private void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -67,6 +56,6 @@ public class User {
         this.password = password;
     }
 
-    public User() {
+    public Consumer() {
     }
 }
