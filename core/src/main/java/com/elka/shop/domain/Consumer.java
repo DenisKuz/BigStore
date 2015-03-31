@@ -3,12 +3,11 @@ package com.elka.shop.domain;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Table(appliesTo = "user")
-public class Consumer {
+public class Consumer implements Serializable {
 
     @Id
     private String login;
@@ -57,5 +56,13 @@ public class Consumer {
     }
 
     public Consumer() {
+    }
+
+    public Consumer(String login, String password, String firstName, String lastName, String patronymic) {
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.patronymic = patronymic;
+        this.login = login;
     }
 }
