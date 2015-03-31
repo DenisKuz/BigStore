@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>store</artifactId>
+        <groupId>com.elka.shop</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>core</artifactId>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${jdbc.driver.version}</version>
+                    </dependency>
+                </dependencies>
+
+                <configuration>
+                    <driver>${postgres.db.driver}</driver>
+                    <url>${postgres.db.url_store}/${postgres.db.name}</url>
+                    <username>${postgres.db.user}</username>
+                    <password>${postgres.db.user.password}</password>
+                    <delimiterType>row</delimiterType>
+                    <settingsKey>sensibleKey</settingsKey>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>drop-db-before-test</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <!-- use default schema to drop working database -->
+                            <url>${postgres.db.url_store}/postgres?user=${postgres.db.user}&amp;password=${postgres.db.user.password}</url>
+                            <autocommit>true</autocommit>
+                            <sqlCommand>drop database ${postgres.db.name}</sqlCommand>
+                            <!-- ignore error when database is not available -->
+                            <onError>continue</onError>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>create-db</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <url>${postgres.db.url_store}/postgres?user=${postgres.db.user}&amp;password=${postgres.db.user.password}</url>
+                            <autocommit>true</autocommit>
+                            <sqlCommand>create database ${postgres.db.name}</sqlCommand>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>create-schema</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <autocommit>true</autocommit>
+                            <srcFiles>
+                                <srcFile>src/main/sql/store-psql.sql</srcFile>
+                            </srcFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+
+</project>
