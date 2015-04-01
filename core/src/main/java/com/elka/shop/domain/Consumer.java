@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Entity(name = "consumer")
 @Table(appliesTo = "consumer")
-public class Consumer implements Serializable {
+public class Consumer implements EntityClass, Serializable {
 
     @Id
     @Column(name = "login")
@@ -25,10 +25,6 @@ public class Consumer implements Serializable {
 
     @Column(name = "patronymic")
     private String patronymic;
-
-    private String getLogin() {
-        return login;
-    }
 
     public void setLogin(String login) {
         this.login = login;

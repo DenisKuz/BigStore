@@ -5,12 +5,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
-public interface ConsumerDao {
+public interface ConsumerDao extends Dao {
 
-    public void create(Consumer entity);
-
-    public Consumer read(long id);
-
-    public List readAll();
+    @Transactional(readOnly = true)
+    List<Consumer> read(List<String> id);
 }
+
+

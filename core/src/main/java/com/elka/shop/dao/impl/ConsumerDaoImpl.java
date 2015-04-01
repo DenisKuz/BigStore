@@ -2,36 +2,31 @@ package com.elka.shop.dao.impl;
 
 import com.elka.shop.dao.inter.ConsumerDao;
 import com.elka.shop.domain.Consumer;
-import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import com.elka.shop.domain.EntityClass;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public class ConsumerDaoImpl implements ConsumerDao {
-
-    @Autowired
-    private HibernateTransactionManager hibernateTransactionManager;
-
-    private Session currentSession() {
-        return hibernateTransactionManager.getSessionFactory().getCurrentSession();
-    }
+public class ConsumerDaoImpl extends AbstractHibernateTransaction implements ConsumerDao {
 
     @Override
-    public void create(Consumer entity) {
+    public void create(EntityClass entity) {
         currentSession().save(entity);
     }
 
     @Override
-    public Consumer read(long id) {
+    public Consumer read(Object id) {
         return null;
     }
 
     @Override
-    public List readAll() {
+    public void delete(EntityClass entity) {
+
+    }
+
+    @Override
+    public List<Consumer> read(List<String> id) {
         return null;
     }
 }
