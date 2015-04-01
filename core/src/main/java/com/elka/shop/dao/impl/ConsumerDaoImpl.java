@@ -3,9 +3,10 @@ package com.elka.shop.dao.impl;
 import com.elka.shop.dao.inter.ConsumerDao;
 import com.elka.shop.domain.Consumer;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,10 +14,10 @@ import java.util.List;
 public class ConsumerDaoImpl implements ConsumerDao {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    private HibernateTransactionManager hibernateTransactionManager;
 
     private Session currentSession() {
-        return sessionFactory.getCurrentSession();
+        return hibernateTransactionManager.getSessionFactory().getCurrentSession();
     }
 
     @Override
