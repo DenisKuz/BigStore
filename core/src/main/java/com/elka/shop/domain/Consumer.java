@@ -3,13 +3,16 @@ package com.elka.shop.domain;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Table(appliesTo = "user")
+@Entity(name = "consumer")
+@Table(appliesTo = "consumer")
 public class Consumer implements Serializable {
 
     @Id
+    @Column(name = "login")
     private String login;
     @Column(name = "password")
     private String password;
@@ -22,6 +25,14 @@ public class Consumer implements Serializable {
 
     @Column(name = "patronymic")
     private String patronymic;
+
+    private String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
     public String getFirstName() {
         return firstName;
