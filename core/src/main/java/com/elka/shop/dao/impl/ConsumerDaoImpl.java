@@ -5,28 +5,34 @@ import com.elka.shop.domain.Consumer;
 import com.elka.shop.domain.EntityClass;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class ConsumerDaoImpl extends AbstractHibernateTransaction implements ConsumerDao {
 
     @Override
-    public void create(EntityClass entity) {
+    public void create(Consumer entity) {
         currentSession().save(entity);
     }
 
+
     @Override
-    public Consumer read(Object id) {
-        return null;
+    public Consumer read(String id) {
+        return (Consumer) currentSession().get(Consumer.class, id);
     }
 
     @Override
     public void delete(EntityClass entity) {
-
+        currentSession().delete(entity);
     }
 
     @Override
-    public List<Consumer> read(List<String> id) {
-        return null;
+    public List<Consumer> readList(List<String> listId) {
+        List<Consumer> consumerList = new ArrayList<>(listId.size());
+        for (String id : listId) {
+            consumerList.add(read(id));
+        }
+        return consumerList;
     }
 }

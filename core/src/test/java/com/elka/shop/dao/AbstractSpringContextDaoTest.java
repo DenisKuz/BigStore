@@ -9,5 +9,5 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 @ContextConfiguration(locations = "classpath*:spring/test-context.xml")
 public abstract class AbstractSpringContextDaoTest extends AbstractTestNGSpringContextTests {
     @Autowired
-    protected Dao dao;
+    protected ConsumerDao consumerDao;
 }
