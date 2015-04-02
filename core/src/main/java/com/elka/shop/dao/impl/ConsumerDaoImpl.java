@@ -23,7 +23,7 @@ public class ConsumerDaoImpl extends AbstractHibernateTransaction implements Con
     }
 
     @Override
-    public void delete(EntityClass entity) {
+    public void delete(Consumer entity) {
         currentSession().delete(entity);
     }
 

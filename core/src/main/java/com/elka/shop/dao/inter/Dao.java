@@ -18,5 +18,5 @@ public interface Dao<E extends EntityClass, T> {
     @Transactional(readOnly = true)
     List<E> readList(List<T> listId);
 
-    public void delete(EntityClass entity);
+    public void delete(E entity);
 }
