@@ -3,12 +3,11 @@ package com.elka.shop.dao;
 import com.elka.shop.domain.Consumer;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-
-public class TestConsumerDaoImpl extends AbstractSpringContextDaoTest {
+@Test(priority = 0)
+public class ConsumerDaoImplTest extends AbstractSpringContextDaoTest {
 
     Consumer consumer = new Consumer("ee", "mark", "Boss", "Mark", "Jon");
 
