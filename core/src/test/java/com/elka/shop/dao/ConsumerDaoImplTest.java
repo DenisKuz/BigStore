@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-@Test(priority = 0)
+
 public class ConsumerDaoImplTest extends AbstractSpringContextDaoTest {
 
     Consumer consumer = new Consumer("ee", "mark", "Boss", "Mark", "Jon");

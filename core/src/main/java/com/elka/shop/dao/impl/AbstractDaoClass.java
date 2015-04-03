@@ -10,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractHibernateTransaction<E extends EntityClass, T> implements Dao<E, T> {
+public abstract class AbstractDaoClass<E extends EntityClass, T> implements Dao<E, T> {
     @Autowired
     private HibernateTransactionManager hibernateTransactionManager;
 
