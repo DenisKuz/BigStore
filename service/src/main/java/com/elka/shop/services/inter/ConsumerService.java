@@ -1,4 +1,4 @@
-package services.inter;
+package com.elka.shop.services.inter;
 
 import com.elka.shop.domain.Consumer;
 
