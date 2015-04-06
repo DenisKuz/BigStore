@@ -11,6 +11,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/webapp-context.xml
+            /WEB-INF/mvc-dispatcher-servlet.xml
         </param-value>
     </context-param>
 
@@ -22,7 +23,7 @@
 
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>
-        <url-pattern>/elka/shop</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 </web-app>
