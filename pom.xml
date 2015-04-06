@@ -41,11 +41,11 @@
             <version>${hibernate.version}</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
             <version>3.5.1-Final</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>

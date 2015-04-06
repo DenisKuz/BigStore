@@ -1,14 +1,12 @@
 package com.elka.shop.domain;
 
-import org.hibernate.annotations.Table;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity(name = "consumer")
-@Table(appliesTo = "consumer")
+//@Table(appliesTo = "consumer")
 public class Consumer implements EntityClass, Serializable {
 
     @Id
