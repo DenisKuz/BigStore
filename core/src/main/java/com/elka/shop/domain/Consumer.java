@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity(name = "consumer")
-//@Table(appliesTo = "consumer")
+// with hibernate annotations don't deploy (java.lang.ClassNotFoundException: org.hibernate.util.DTDEntityResolver)
 public class Consumer implements EntityClass, Serializable {
 
     @Id

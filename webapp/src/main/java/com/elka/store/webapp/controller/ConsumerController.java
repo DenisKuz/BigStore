@@ -13,8 +13,8 @@ public class ConsumerController {
     @Autowired
     private ConsumerService consumerService;
 
-   @RequestMapping(value = "/first")
+   /*@RequestMapping(value = "/first")
     public Consumer getConsumer(final HttpServletRequest request){
         return consumerService.getConsumerByLogin("ivan");
-    }
+    }*/
 }
