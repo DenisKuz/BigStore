@@ -23,7 +23,7 @@
 
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>
-        <url-pattern>/reg/*</url-pattern>
+        <url-pattern>/req/*</url-pattern>
     </servlet-mapping>
 
    <!-- <welcome-file-list>

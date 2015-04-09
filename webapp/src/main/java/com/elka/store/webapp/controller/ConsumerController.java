@@ -3,18 +3,20 @@ package com.elka.store.webapp.controller;
 import com.elka.shop.domain.Consumer;
 import com.elka.shop.services.inter.ConsumerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-@RestController
+@Controller
 public class ConsumerController {
     @Autowired
     private ConsumerService consumerService;
 
-   /*@RequestMapping(value = "/first")
-    public Consumer getConsumer(final HttpServletRequest request){
-        return consumerService.getConsumerByLogin("ivan");
-    }*/
+    @RequestMapping(value = "/first", method = RequestMethod.GET, produces = "text/plain")
+
+    public @ResponseBody String getConsumer(final @RequestParam("login") String login) {
+         return consumerService.getConsumerByLogin(login).getPassword();
+       // return "33333";
+    }
 }
