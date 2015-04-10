@@ -21,9 +21,6 @@ public class Consumer implements EntityClass, Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "patronymic")
-    private String patronymic;
-
     public void setLogin(String login) {
         this.login = login;
     }
@@ -44,14 +41,6 @@ public class Consumer implements EntityClass, Serializable {
         this.lastName = lastName;
     }
 
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -67,7 +56,6 @@ public class Consumer implements EntityClass, Serializable {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.patronymic = patronymic;
         this.login = login;
     }
 }

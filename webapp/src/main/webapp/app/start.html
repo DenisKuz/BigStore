@@ -25,14 +25,16 @@
     </table>
 
     <br>
-    <input type="button" value="submit" onclick="query($('#login').val())"/>
+    <input type="button" value="submit" onclick="getConsumerDataByLogin($('#login').val())"/>
     <br>
 </div>
 <br>
 
 <div>
+    <span>Your data:</span>
+    <br>
     <label>
-        <textarea rows="3" cols="30"></textarea>
+        <textarea id="consumerData" rows="3" cols="30"></textarea>
     </label>
 </div>
 
