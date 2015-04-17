@@ -18,6 +18,28 @@ Main.startPage = {
 
     printConsumerData: function (data, element) {
         element.val(data.firstName + ' ' + data.lastName);
+    },
+
+    getStartPiece: function () {
+
+        $(document).ready(function () {
+            $.ajax({
+                dataType: "html",
+                type: "GET",
+                url: "../app/piece/start_piece.html",
+                success: function(source){
+                    Main.startPage.renderStartPiece(source);
+                }
+            })
+
+        });
+
+    },
+
+    renderStartPiece: function(source){
+        var template = Handlebars.compile(source);
+        var html = template();
+        $('body').html(html);
     }
 
 };

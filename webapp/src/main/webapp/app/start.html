@@ -7,37 +7,12 @@
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="../lib/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="../js/start_page.js"></script>
+    <script type="text/javascript" src="../lib/handlebars_v1.3.0.js"></script>
+    <script type="text/javascript"> Main.startPage.getStartPiece();</script>
 
 </head>
 
-<body>
-
-<div>
-    <table>
-        <tr>
-            <td>Login:</td>
-            <td><label> <input id="login" type="text" size="20" value="login"/> </label></td>
-        </tr>
-
-        <tr>
-            <td> Password:</td>
-            <td><label> <input type="text" size="20" value="password"/> </label></td>
-        </tr>
-    </table>
-
-    <br>
-    <input type="button" value="submit" onclick="Main.startPage.getConsumerDataByLogin($('#login').val(),$('#consumerData'))"/>
-    <br>
-</div>
-<br>
-
-<div>
-    <span>Your data:</span>
-    <br>
-    <label>
-        <textarea id="consumerData" rows="3" cols="30"></textarea>
-    </label>
-</div>
+<body id="body">
 
 </body>
 </html>

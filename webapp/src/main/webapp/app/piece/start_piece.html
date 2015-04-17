@@ -1,0 +1,28 @@
+<div id="start_piece">
+    <div>
+        <table>
+            <tr>
+                <td>Login:</td>
+                <td><label> <input id="login" type="text" size="20"> </label></td>
+            </tr>
+
+            <tr>
+                <td> Password:</td>
+                <td><label> <input type="text" size="20"/> </label></td>
+            </tr>
+        </table>
+
+        <br>
+        <input type="button" value="submit" onclick="Main.startPage.getConsumerDataByLogin($('#login').val(),$('#consumerData'))"/>
+        <br>
+    </div>
+    <br>
+
+    <div>
+        <span>Your data:</span>
+        <br>
+        <label>
+            <textarea id="consumerData" rows="3" cols="30"></textarea>
+        </label>
+    </div>
+</div>
