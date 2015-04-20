@@ -1,5 +1,6 @@
 <div id="start_piece">
-    <div>
+    <br>
+    <div align="center">
         <table>
             <tr>
                 <td>Login:</td>
@@ -8,21 +9,16 @@
 
             <tr>
                 <td> Password:</td>
-                <td><label> <input type="text" size="20"/> </label></td>
+                <td><label> <input type="password" size="20"/> </label></td>
+            </tr>
+            <tr >
+                <td></td>
+                <td align="right"><input type="button" value="entry" onclick="Main.startPage.getConsumerDataByLogin($('#login').val(),$('#consumerData'))"/></td>
             </tr>
         </table>
-
-        <br>
-        <input type="button" value="submit" onclick="Main.startPage.getConsumerDataByLogin($('#login').val(),$('#consumerData'))"/>
-        <br>
+        <div><a href="#">registration</a></div>
     </div>
     <br>
 
-    <div>
-        <span>Your data:</span>
-        <br>
-        <label>
-            <textarea id="consumerData" rows="3" cols="30"></textarea>
-        </label>
-    </div>
+    <div id="messageError"></div>
 </div>
