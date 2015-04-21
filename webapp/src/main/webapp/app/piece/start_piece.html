@@ -9,16 +9,16 @@
 
             <tr>
                 <td> Password:</td>
-                <td><label> <input type="password" size="20"/> </label></td>
+                <td><label> <input id="password" type="password" size="20"/> </label></td>
             </tr>
             <tr >
                 <td></td>
-                <td align="right"><input type="button" value="entry" onclick="Main.startPage.getConsumerDataByLogin($('#login').val(),$('#consumerData'))"/></td>
+                <td align="right"><input type="button" value="entry" onclick="Main.startPage.entry($('#login').val(),$('#password').val())"/></td>
             </tr>
         </table>
         <div><a href="#">registration</a></div>
+        <br>
+        <div id="messageError">Answer from server</div>
     </div>
     <br>
-
-    <div id="messageError"></div>
 </div>

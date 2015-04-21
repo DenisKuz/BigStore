@@ -8,7 +8,6 @@ import java.io.Serializable;
 @Entity(name = "consumer")
 // with hibernate annotations don't deploy (java.lang.ClassNotFoundException: org.hibernate.util.DTDEntityResolver)
 public class Consumer implements EntityClass, Serializable {
-
     @Id
     @Column(name = "login")
     private String login;
@@ -21,6 +20,9 @@ public class Consumer implements EntityClass, Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+    public String getLogin() {
+        return login;
+    }
     public void setLogin(String login) {
         this.login = login;
     }

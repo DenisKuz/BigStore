@@ -6,5 +6,6 @@ public interface ConsumerService {
 
     Consumer getConsumerByLogin(String login);
 
-    boolean checkConsumer(String login, String password);
+    String checkConsumer(String login, String password);
+
 }
