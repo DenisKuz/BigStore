@@ -3,9 +3,10 @@
  */
 
 Main.startPage = {
+    template: null,
+    hello: "hello",
 
     entry: function (login, password) {
-
         $.ajax({
             dataType: "text",
             contentType: 'application/json; charset=utf-8',
@@ -13,6 +14,14 @@ Main.startPage = {
             url: "/elka/store/req/Entry",
             data: JSON.stringify({login: login, password: password}),
             success: function (data) {
+
+                if (data == Main.startPage.hello) {
+                    debugger;
+                    Main.startPage.getConsumerDataByLogin($('#login').val()).done(function () {
+                        Main.welcomePage.render(Main.welcomePage.template, Main.consumer);
+                    });
+                    return;
+                }
                 Main.startPage.printError(data, $('#messageError'));
             }
         })
@@ -22,42 +31,46 @@ Main.startPage = {
         element.text(data);
     },
 
-    getConsumerDataByLogin: function (login, element) {
-        $.ajax({
-            dataType: "json",
-            type: "GET",
-            url: "/elka/store/req/GetConsumerData",
-            data: "login=" + login,
-            success: function (data) {
-                Main.startPage.printConsumerData(data, element);
-            }
-        })
+    getConsumerDataByLogin: function (login) {
+        if (Main.consumer) {
+            return $.Deferred().resolve();
+        }
+        else {
+            return $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/elka/store/req/GetConsumerData",
+                data: "login=" + login,
+                success: function (data) {
+                    Main.consumer = data;
+                }
+            })
+        }
     },
 
-    printConsumerData: function (data, element) {
+   /* printConsumerData: function (data, element) {
         element.val(data.firstName + ' ' + data.lastName);
-    },
+    },*/
 
-    getStartPiece: function () {
-
-        $(document).ready(function () {
-            $.ajax({
+    get: function () {
+        if (Main.startPage.template) {
+            return $.Deferred().resolve();
+        } else {
+            return $.ajax({
                 dataType: "html",
                 type: "GET",
                 url: "../app/piece/start_piece.html",
                 success: function (source) {
-                    Main.startPage.renderStartPiece(source);
+                    Main.startPage.template = source;
                 }
-            })
-
-        });
-
+            });
+        }
     },
 
-    renderStartPiece: function (source) {
-        //var template = Handlebars.compile(source);
-        //var html = template();
-        $('body').html(source);
+    render: function () {
+        Main.startPage.get().done(function () {
+            $('body').html(Main.startPage.template);
+        });
     }
 
 };

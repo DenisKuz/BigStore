@@ -4,6 +4,8 @@
 
 var Main = {
 
+    consumer: null,
+
     startPage: {},
 
     registrationPage: {},

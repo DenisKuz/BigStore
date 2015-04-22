@@ -7,8 +7,14 @@
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="../lib/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="../js/start_page.js"></script>
+    <script type="text/javascript" src="../js/welcome_page.js"></script>
     <script type="text/javascript" src="../lib/handlebars_v1.3.0.js"></script>
-    <script type="text/javascript"> Main.startPage.getStartPiece();</script>
+    <script type="text/javascript">
+        Main.welcomePage.get();
+        $(function () {
+            Main.startPage.render();
+        });
+    </script>
 
 </head>
 
