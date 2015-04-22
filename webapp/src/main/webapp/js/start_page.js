@@ -5,6 +5,7 @@
 Main.startPage = {
     template: null,
     hello: "hello",
+    urlPage: "../app/piece/start_page.html",
 
     entry: function (login, password) {
         $.ajax({
@@ -48,27 +49,8 @@ Main.startPage = {
         }
     },
 
-   /* printConsumerData: function (data, element) {
-        element.val(data.firstName + ' ' + data.lastName);
-    },*/
-
-    get: function () {
-        if (Main.startPage.template) {
-            return $.Deferred().resolve();
-        } else {
-            return $.ajax({
-                dataType: "html",
-                type: "GET",
-                url: "../app/piece/start_piece.html",
-                success: function (source) {
-                    Main.startPage.template = source;
-                }
-            });
-        }
-    },
-
     render: function () {
-        Main.startPage.get().done(function () {
+        Main.getPage(Main.startPage, Main.startPage.urlPage).done(function () {
             $('body').html(Main.startPage.template);
         });
     }
