@@ -47,12 +47,6 @@ Main.startPage = {
                 }
             })
         }
-    },
-
-    render: function () {
-        Main.getPage(Main.startPage, Main.startPage.urlPage).done(function () {
-            $('body').html(Main.startPage.template);
-        });
     }
 
 };

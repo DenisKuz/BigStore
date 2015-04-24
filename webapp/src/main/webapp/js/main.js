@@ -25,5 +25,14 @@ var Main = {
                 }
             });
         }
+    },
+    getAllPage: function () {
+        return $.when(Main.getPage(Main.welcomePage, Main.welcomePage.urlPage), Main.getPage(Main.registrationPage,
+            Main.registrationPage.urlPge), Main.getPage(Main.startPage, Main.startPage.urlPage));
+    },
+
+    renderPage: function(html){
+        $('body').html(html);
     }
+
 };

@@ -8,11 +8,12 @@
     <script type="text/javascript" src="../lib/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="../js/start_page.js"></script>
     <script type="text/javascript" src="../js/welcome_page.js"></script>
+    <script type="text/javascript" src="../js/registration_page.js"></script>
     <script type="text/javascript" src="../lib/handlebars_v1.3.0.js"></script>
     <script type="text/javascript">
-        Main.getPage(Main.welcomePage, Main.welcomePage.urlPage);
+
         $(function () {
-            Main.startPage.render();
+            Main.getAllPage().done(function(){Main.renderPage(Main.startPage.template)} );
         });
     </script>
 
