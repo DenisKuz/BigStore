@@ -54,7 +54,7 @@ public class Consumer implements EntityClass, Serializable {
     public Consumer() {
     }
 
-    public Consumer(String login, String password, String firstName, String lastName, String patronymic) {
+    public Consumer(String login, String password, String firstName, String lastName) {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;

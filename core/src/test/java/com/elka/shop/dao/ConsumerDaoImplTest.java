@@ -9,7 +9,7 @@ import static java.util.Arrays.asList;
 
 public class ConsumerDaoImplTest extends AbstractSpringContextDaoTest {
 
-    Consumer consumer = new Consumer("ee", "mark", "Boss", "Mark", "Jon");
+    Consumer consumer = new Consumer("ee", "mark", "Boss", "Mark");
 
     @Test(priority = -1)
     public void testSave() {
