@@ -33,7 +33,8 @@ Main.startPage = {
     },
 
     getConsumerDataByLogin: function (login) {
-        if (Main.consumer) {
+        if (!$.isEmptyObject(Main.consumer)) {
+            debugger;
             return $.Deferred().resolve();
         }
         else {

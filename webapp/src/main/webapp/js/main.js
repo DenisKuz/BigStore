@@ -4,7 +4,7 @@
 
 var Main = {
 
-    consumer: null,
+    consumer: {},
 
     startPage: {},
 
@@ -12,14 +12,14 @@ var Main = {
 
     welcomePage: {},
 
-    getPage: function (page, url) {
+    getPage: function (page) {
         if (page.template) {
             return $.Deferred().resolve();
         } else {
             return $.ajax({
                 dataType: "html",
                 type: "GET",
-                url: url,
+                url: page.urlPage,
                 success: function (source) {
                     page.template = source;
                 }
@@ -27,11 +27,17 @@ var Main = {
         }
     },
     getAllPage: function () {
-        return $.when(Main.getPage(Main.welcomePage, Main.welcomePage.urlPage), Main.getPage(Main.registrationPage,
-            Main.registrationPage.urlPge), Main.getPage(Main.startPage, Main.startPage.urlPage));
+        debugger;
+        var arr = [];
+        for (var page in Main) {
+            if (Main[page].urlPage) {
+                arr.push(Main.getPage(Main[page]));
+            }
+        }
+        return $.when.apply($, arr);
     },
 
-    renderPage: function(html){
+    renderPage: function (html) {
         $('body').html(html);
     }
 

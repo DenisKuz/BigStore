@@ -4,5 +4,5 @@
 
 Main.registrationPage = {
     template: null,
-    urlPge: "../app/piece/registration_page.html"
+    urlPage: "../app/piece/registration_page.html"
 };
