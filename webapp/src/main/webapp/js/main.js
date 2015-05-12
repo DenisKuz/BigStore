@@ -27,7 +27,6 @@ var Main = {
         }
     },
     getAllPage: function () {
-        debugger;
         var arr = [];
         for (var page in Main) {
             if (Main[page].urlPage) {

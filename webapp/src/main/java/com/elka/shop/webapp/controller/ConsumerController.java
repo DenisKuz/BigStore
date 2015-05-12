@@ -1,4 +1,4 @@
-package com.elka.store.webapp.controller;
+package com.elka.shop.webapp.controller;
 
 import com.elka.shop.domain.Consumer;
 import com.elka.shop.services.inter.ConsumerService;

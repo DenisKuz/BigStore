@@ -17,7 +17,6 @@ Main.startPage = {
             success: function (data) {
 
                 if (data == Main.startPage.hello) {
-                    debugger;
                     Main.startPage.getConsumerDataByLogin($('#login').val()).done(function () {
                         Main.welcomePage.render(Main.welcomePage.template, Main.consumer);
                     });
@@ -34,7 +33,6 @@ Main.startPage = {
 
     getConsumerDataByLogin: function (login) {
         if (!$.isEmptyObject(Main.consumer)) {
-            debugger;
             return $.Deferred().resolve();
         }
         else {
