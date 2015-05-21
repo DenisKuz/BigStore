@@ -2,6 +2,8 @@ package com.elka.shop.webapp.controller;
 
 import com.elka.shop.domain.Consumer;
 import com.elka.shop.services.inter.ConsumerService;
+import com.elka.shop.utils.mapping.Mapper;
+import com.elka.shop.webapp.dto.ConsumerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,14 @@ public class ConsumerController {
 
     @RequestMapping(value = "/Entry", method = POST)
     @ResponseBody
-    public String checkEntry(@RequestBody final Consumer consumer) {
+    public String checkEntry(@RequestBody final ConsumerDTO consumerDTO) {
+        Consumer consumer = Mapper.map(consumerDTO, Consumer.class);
         return consumerService.checkConsumer(consumer.getLogin(), consumer.getPassword());
+    }
+
+    @RequestMapping(value = "/Registration", method = POST)
+    public void registration(@RequestBody final ConsumerDTO consumerDTO) {
+        Consumer consumer = Mapper.map(consumerDTO, Consumer.class);
+        consumerService.save(consumer);
     }
 }

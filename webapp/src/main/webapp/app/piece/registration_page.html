@@ -1,28 +1,32 @@
 <div id="registration_page" align="center">
     <h3>Registration</h3>
     <br>
-    <table>
-        <tr>
-            <td><label for="firstName">First name:</label></td>
-            <td><input id="firstName" type="text" size="30"></td>
-        </tr>
-        <tr>
-            <td><label for="lastName">Last name:</label></td>
-            <td><input id="lastName" type="text" size="30"></td>
-        </tr>
-        <tr>
-            <td><label for="login">Login:</label></td>
-            <td><input id="login" type="text" size="30"></td>
-        </tr>
-        <tr>
-            <td><label for="password">Password:</label></td>
-            <td><input id="password" type="password" size="30"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td align="right"><input type="button" value="submit" onclick=""/></td>
-        </tr>
-    </table>
+
+    <form id="registrationForm" method="post">
+        <table>
+            <tr>
+                <td><label for="firstName">First name:</label></td>
+                <td><input id="firstName" name="firstName" type="text" size="30"></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last name:</label></td>
+                <td><input id="lastName" name="lastName" type="text" size="30"></td>
+            </tr>
+            <tr>
+                <td><label for="login">Login:</label></td>
+                <td><input id="login" name="login" type="text" size="30"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input id="password" name="password" type="password" size="30"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="right"><input type="button" value="submit" onclick="Main.registrationPage.registration()"/>
+                </td>
+            </tr>
+        </table>
+    </form>
     <br>
 
     <div id="messageError" style="color: red"></div>

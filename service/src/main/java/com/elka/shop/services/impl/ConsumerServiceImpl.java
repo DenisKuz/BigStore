@@ -28,4 +28,9 @@ public class ConsumerServiceImpl implements ConsumerService {
         if (!bool) return WRONG_PASSWORD;
         return GOOD_IDENTIFICATION;
     }
+
+    @Override
+    public void save(Consumer consumer) {
+        consumerDao.create(consumer);
+    }
 }
