@@ -27,7 +27,7 @@ public class ConsumerController {
     @ResponseBody
     public String checkEntry(@RequestBody final ConsumerDTO consumerDTO) {
         Consumer consumer = Mapper.map(consumerDTO, Consumer.class);
-        return consumerService.checkConsumer(consumer.getLogin(), consumer.getPassword());
+        return consumerService.checkSecurityConsumerData(consumer.getLogin(), consumer.getPassword());
     }
 
     @RequestMapping(value = "/Registration", method = POST)

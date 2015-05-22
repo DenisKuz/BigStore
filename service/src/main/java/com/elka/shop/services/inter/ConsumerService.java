@@ -6,7 +6,7 @@ public interface ConsumerService {
 
     Consumer getConsumerByLogin(String login);
 
-    String checkConsumer(String login, String password);
+    String checkSecurityConsumerData(String login, String password);
 
     void save(Consumer consumer);
 
