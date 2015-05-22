@@ -8,6 +8,8 @@ public interface ConsumerService {
 
     String checkSecurityConsumerData(String login, String password);
 
+    String checkLogin(String login);
+
     void save(Consumer consumer);
 
 }

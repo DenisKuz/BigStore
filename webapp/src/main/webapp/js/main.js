@@ -38,6 +38,10 @@ var Main = {
 
     renderPage: function (html) {
         $('body').html(html);
+    },
+
+    printMessage: function (data, element) {
+        element.text(data);
     }
 
 };

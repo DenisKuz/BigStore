@@ -8,9 +8,13 @@ import com.elka.shop.services.inter.ConsumerService;
 
 @Service
 public class ConsumerServiceImpl implements ConsumerService {
+
     private final static String NO_USER = "user does not exist! Please register";
     private final static String WRONG_PASSWORD = "password is not right!";
     private final static String GOOD_IDENTIFICATION = "hello";
+
+    private final static String EXISTING_LOGIN = "this login already exist!";
+    private final static String GOOD_REGISTRATION = "You are registered";
 
     @Autowired
     private ConsumerDao consumerDao;
@@ -27,6 +31,13 @@ public class ConsumerServiceImpl implements ConsumerService {
         boolean bool = password.equals(consumer.getPassword());
         if (!bool) return WRONG_PASSWORD;
         return GOOD_IDENTIFICATION;
+    }
+
+    @Override
+    public String checkLogin(String login) {
+        Consumer consumer = consumerDao.read(login);
+        if (consumer != null) return EXISTING_LOGIN;
+        return GOOD_REGISTRATION;
     }
 
     @Override

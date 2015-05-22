@@ -35,4 +35,10 @@ public class ConsumerController {
         Consumer consumer = Mapper.map(consumerDTO, Consumer.class);
         consumerService.save(consumer);
     }
+
+    @RequestMapping(value = "/CheckLogin", method = GET)
+    @ResponseBody
+    public String checkLogin(@RequestParam("login") String login){
+        return consumerService.checkLogin(login);
+    }
 }

@@ -22,12 +22,12 @@
             </tr>
             <tr>
                 <td></td>
-                <td align="right"><input type="button" value="submit" onclick="Main.registrationPage.registration()"/>
+                <td align="right"><input type="button" value="submit" onclick="Main.registrationPage.checkLogin($('#login').val())"/>
                 </td>
             </tr>
         </table>
     </form>
     <br>
 
-    <div id="messageError" style="color: red"></div>
+    <div id="message" style="color: red"></div>
 </div>
