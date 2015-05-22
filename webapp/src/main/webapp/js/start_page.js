@@ -1,7 +1,6 @@
 /**
  * Created by Denis on 4/7/2015.
  */
-
 Main.startPage = {
     template: null,
     hello: "hello",
@@ -22,13 +21,9 @@ Main.startPage = {
                     });
                     return;
                 }
-                Main.startPage.printError(data, $('#messageError'));
+                Main.printMessage(data, $('#messageError'));
             }
         })
-    },
-
-    printError: function (data, element) {
-        element.text(data);
     },
 
     getConsumerDataByLogin: function (login) {
