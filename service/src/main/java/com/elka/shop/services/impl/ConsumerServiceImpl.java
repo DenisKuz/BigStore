@@ -21,7 +21,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     }
 
     @Override
-    public String checkConsumer(String login, String password) {
+    public String checkSecurityConsumerData(String login, String password) {
         Consumer consumer = consumerDao.read(login);
         if (consumer == null) return NO_USER;
         boolean bool = password.equals(consumer.getPassword());
