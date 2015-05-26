@@ -19,12 +19,12 @@ Main.registrationPage = {
 
     checkLogin: function (login) {
         $.ajax({
-            dataType: "text",
+            dataType: "json",
             type: "GET",
             url: "/elka/store/req/CheckLogin",
             data: "login=" + login,
             success: function (data) {
-                if (data == Main.registrationPage.good_registration) {
+                if (data.messageCode == 0) {
                     Main.registrationPage.registration();
                 }
                 Main.printMessage(data, $('#message'));

@@ -8,20 +8,20 @@ Main.startPage = {
 
     entry: function (login, password) {
         $.ajax({
-            dataType: "text",
+            dataType: "json",
             contentType: 'application/json; charset=utf-8',
             type: "POST",
             url: "/elka/store/req/Entry",
             data: JSON.stringify({login: login, password: password}),
             success: function (data) {
-
-                if (data == Main.startPage.hello) {
+debugger;
+                if (data.messageCode == 0) {
                     Main.startPage.getConsumerDataByLogin($('#login').val()).done(function () {
                         Main.welcomePage.render(Main.welcomePage.template, Main.consumer);
                     });
                     return;
                 }
-                Main.printMessage(data, $('#messageError'));
+                Main.printMessage(data, $('#message'));
             }
         })
     },

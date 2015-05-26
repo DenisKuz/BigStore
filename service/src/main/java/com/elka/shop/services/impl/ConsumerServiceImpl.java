@@ -2,19 +2,16 @@ package com.elka.shop.services.impl;
 
 import com.elka.shop.dao.inter.ConsumerDao;
 import com.elka.shop.domain.Consumer;
+
+import static com.elka.shop.utils.techmessage.TechnicalMessage.*;
+
+import com.elka.shop.utils.techmessage.TechnicalMessageObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.elka.shop.services.inter.ConsumerService;
 
 @Service
 public class ConsumerServiceImpl implements ConsumerService {
-
-    private final static String NO_USER = "user does not exist! Please register";
-    private final static String WRONG_PASSWORD = "password is not right!";
-    private final static String GOOD_IDENTIFICATION = "hello";
-
-    private final static String EXISTING_LOGIN = "this login already exist!";
-    private final static String GOOD_REGISTRATION = "You are registered";
 
     @Autowired
     private ConsumerDao consumerDao;
@@ -25,19 +22,19 @@ public class ConsumerServiceImpl implements ConsumerService {
     }
 
     @Override
-    public String checkSecurityConsumerData(String login, String password) {
+    public TechnicalMessageObject checkSecurityConsumerData(String login, String password) {
         Consumer consumer = consumerDao.read(login);
-        if (consumer == null) return NO_USER;
+        if (consumer == null) return new TechnicalMessageObject(1, NO_USER.getMessage());
         boolean bool = password.equals(consumer.getPassword());
-        if (!bool) return WRONG_PASSWORD;
-        return GOOD_IDENTIFICATION;
+        if (!bool) return new TechnicalMessageObject(1, WRONG_PASSWORD.getMessage());
+        return new TechnicalMessageObject(0, GOOD_IDENTIFICATION.getMessage());
     }
 
     @Override
-    public String checkLogin(String login) {
+    public TechnicalMessageObject checkLogin(String login) {
         Consumer consumer = consumerDao.read(login);
-        if (consumer != null) return EXISTING_LOGIN;
-        return GOOD_REGISTRATION;
+        if (consumer != null) return new TechnicalMessageObject(1, EXISTING_LOGIN.getMessage());
+        return new TechnicalMessageObject(0, GOOD_REGISTRATION.getMessage());
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.elka.shop.webapp.controller;
 import com.elka.shop.domain.Consumer;
 import com.elka.shop.services.inter.ConsumerService;
 import com.elka.shop.utils.mapping.Mapper;
+import com.elka.shop.utils.techmessage.TechnicalMessageObject;
 import com.elka.shop.webapp.dto.ConsumerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ public class ConsumerController {
 
     @RequestMapping(value = "/Entry", method = POST)
     @ResponseBody
-    public String checkEntry(@RequestBody final ConsumerDTO consumerDTO) {
+    public TechnicalMessageObject checkEntry(@RequestBody final ConsumerDTO consumerDTO) {
         Consumer consumer = Mapper.map(consumerDTO, Consumer.class);
         return consumerService.checkSecurityConsumerData(consumer.getLogin(), consumer.getPassword());
     }
@@ -38,7 +39,7 @@ public class ConsumerController {
 
     @RequestMapping(value = "/CheckLogin", method = GET)
     @ResponseBody
-    public String checkLogin(@RequestParam("login") String login){
-        return consumerService.checkLogin(login);
+    public TechnicalMessageObject checkLogin(@RequestParam("login") String login){
+       return consumerService.checkLogin(login);
     }
 }

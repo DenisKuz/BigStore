@@ -41,7 +41,15 @@ var Main = {
     },
 
     printMessage: function (data, element) {
-        element.text(data);
+
+        if (data.messageCode == 0) {
+            element.attr("style","color: green")
+        }
+        else if(data.messageCode == 1){
+            element.attr("style","color: red")
+        }
+
+        element.text(data.messageText);
     }
 
 };
