@@ -43,13 +43,35 @@ var Main = {
     printMessage: function (data, element) {
 
         if (data.messageCode == 0) {
-            element.attr("style","color: green")
+            element.attr("style", "color: green")
         }
-        else if(data.messageCode == 1){
-            element.attr("style","color: red")
+        else if (data.messageCode == 1) {
+            element.attr("style", "color: red")
         }
 
         element.text(data.messageText);
+    },
+
+    checkSendingForm: function (form) {
+        var sendingFields = $('[required]', form);
+        var button = $('[type=button]', form);
+        var count = 0;
+
+        $(sendingFields).on('focusout input', $(form), function () {
+                if ($(this).val() == "") {
+                    $(this).css("background-color", "red");
+                    button.prop('disabled', true);
+                    count++;
+                }
+                else {
+                    $(this).css("background-color", "");
+                    count--;
+                }
+                if (count == 0) {
+                    button.prop('disabled', false);
+                }
+            }
+        )
     }
 
 };

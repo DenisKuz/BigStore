@@ -6,7 +6,6 @@ Main.registrationPage = {
     template: null,
     urlPage: "../app/piece/registration_page.html",
     good_registration: "You are registered",
-    _this: this,
     registration: function () {
         $.ajax({
             dataType: "text",
@@ -18,6 +17,7 @@ Main.registrationPage = {
     },
 
     checkLogin: function (login) {
+
         $.ajax({
             dataType: "json",
             type: "GET",
