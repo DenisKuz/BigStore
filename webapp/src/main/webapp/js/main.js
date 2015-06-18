@@ -53,35 +53,12 @@ var Main = {
     },
 
     checkSendingForm: function (form) {
-        var sendingFields = $('[required]', form);
-        var button = $('[type=button]', form);
-
-        $(sendingFields).on('focusout input', $(form), function () {
+        var validation = new ValidationForm(form);
+        $(validation.sendingFields).on('focusout input', function () {
                 debugger;
-                if ($(this).val() == "") {
-                    $(this).css("background-color", "red");
-                    button.prop('disabled', true);
-                }
-
-                else {
-                    $(this).css("background-color", "");
-                }
-
-                if (isFormFilled(sendingFields)) {
-                    button.prop('disabled', false);
-                }
+              validation.checkFillingOfForm(this);
             }
         );
-        var isFormFilled = function (sendingFields) {
-            debugger;
-            var count = 0;
-            sendingFields.each(function (index, element) {
-                if ($(element).val() != "") {
-                    count++
-                }
-            });
-            return (count == sendingFields.length);
-        }
     }
 
 };
