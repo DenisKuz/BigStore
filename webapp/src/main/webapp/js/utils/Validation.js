@@ -4,24 +4,34 @@
 var ValidationForm = function (form) {
 
     var _this = this;
-    _this.form = form;
-    _this.sendingFields = $('[required]', form);
-    _this.SubmitButton = $('[type=button]', form);
+    _this.validatingOfFields = $('[data-validation]', form);
+    var SubmitButton = $('[type=button]', form);
+    var mapFieldsOnValidation = {};
+
+    var mappingFieldsOnValidation = (function () {
+        _this.validatingOfFields.each(function (index, field) {
+            var fieldName = $(field).attr("id");
+            if ($(field).data("validation")) {
+                mapFieldsOnValidation[fieldName] = $(field).data("validation");
+            }
+        })
+    })();
+
 
     var isFormFilled = function () {
         var count = 0;
-        _this.sendingFields.each(function (index, element) {
+        _this.validatingOfFields.each(function (index, element) {
             if ($(element).val() != "") {
                 count++
             }
         });
-        return (count == _this.sendingFields.length);
+        return (count == _this.validatingOfFields.length);
     };
 
-    _this.checkFillingOfForm = function(element){
+    _this.checkFillingOfForm = function (element) {
         if ($(element).val() == "") {
             $(element).css("background-color", "red");
-            $(_this.SubmitButton).prop('disabled', true);
+            $(SubmitButton).prop('disabled', true);
         }
 
         else {
@@ -29,7 +39,36 @@ var ValidationForm = function (form) {
         }
 
         if (isFormFilled(form)) {
-            $(_this.SubmitButton).prop('disabled', false);
+            $(SubmitButton).prop('disabled', false);
+        }
+    };
+
+    _this.checkForm = function (checkingElement) {
+        var fieldValidation = getValidationForField(checkingElement).split(" ");
+        for (var index in fieldValidation) {
+            ValidationFunctions[fieldValidation[index]](checkingElement);
+        }
+    };
+
+    var getValidationForField = function (checkingElement) {
+        var fieldName = $(checkingElement).attr("id");
+        var fieldValidation = [];
+        for (var key in mapFieldsOnValidation) {
+            if (key == fieldName) {
+                fieldValidation = mapFieldsOnValidation[key];
+                break;
+            }
+        }
+        return fieldValidation;
+    };
+
+    var ValidationFunctions = {
+
+        notEmpty: function (field) {
+            _this.checkFillingOfForm(field)
+        },
+        onlyLetters: function (field) {
+
         }
     };
 };
