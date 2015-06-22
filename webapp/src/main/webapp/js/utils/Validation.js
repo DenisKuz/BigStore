@@ -28,7 +28,7 @@ var ValidationForm = function (form) {
         return (count == _this.validatingOfFields.length);
     };
 
-    _this.checkFillingOfForm = function (element) {
+    var checkFillingOfForm = function (element) {
         if ($(element).val() == "") {
             $(element).css("background-color", "red");
             $(SubmitButton).prop('disabled', true);
@@ -65,7 +65,7 @@ var ValidationForm = function (form) {
     var ValidationFunctions = {
 
         notEmpty: function (field) {
-            _this.checkFillingOfForm(field)
+            checkFillingOfForm(field)
         },
         onlyLetters: function (field) {
 

@@ -55,7 +55,6 @@ var Main = {
     checkSendingForm: function (form) {
         var validation = new ValidationForm(form);
         $(validation.validatingOfFields).on('focusout input', function () {
-              //validation.checkFillingOfForm(this);
                 validation.checkForm(this);
             }
         );
