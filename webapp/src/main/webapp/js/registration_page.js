@@ -31,5 +31,14 @@ Main.registrationPage = {
             }
 
         })
+    },
+
+    elementsActions: function () {
+        $(function () {
+            $("input[type=button][value=submit]").on("click", function () {
+                Main.registrationPage.checkLogin($('#login').val())
+            });
+            Main.checkSendingForm($('#registrationForm'));
+        });
     }
 };

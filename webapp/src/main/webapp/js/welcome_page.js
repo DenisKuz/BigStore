@@ -5,10 +5,11 @@ Main.welcomePage = {
     template: null,
     urlPage: "../app/piece/welcome_page.html",
 
-    render: function (temp, source) {
-        var template = Handlebars.compile(temp);
-        var html = template(source);
-        $('body').html(html);
+    elementsActions: function () {
+        $(function () {
+            $("input[type=button][value=back]").on("click", function () {
+                Main.renderPage(Main.startPage)
+            });
+        });
     }
-
 };

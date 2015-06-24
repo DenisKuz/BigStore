@@ -36,8 +36,14 @@ var Main = {
         return $.when.apply($, arr);
     },
 
-    renderPage: function (html) {
+    renderPage: function (page, source) {
+        var html = page.template;
+        if (source) {
+            var template = Handlebars.compile(page.template);
+            html = template(source);
+        }
         $('body').html(html);
+        page.elementsActions();
     },
 
     printMessage: function (data, element) {
@@ -61,3 +67,8 @@ var Main = {
     }
 
 };
+$(function () {
+    Main.getAllPage().done(function () {
+        Main.renderPage(Main.startPage);
+    });
+});

@@ -14,10 +14,9 @@ Main.startPage = {
             url: "/elka/store/req/Entry",
             data: JSON.stringify({login: login, password: password}),
             success: function (data) {
-debugger;
                 if (data.messageCode == 0) {
                     Main.startPage.getConsumerDataByLogin($('#login').val()).done(function () {
-                        Main.welcomePage.render(Main.welcomePage.template, Main.consumer);
+                        Main.renderPage(Main.welcomePage, Main.consumer);
                     });
                     return;
                 }
@@ -41,7 +40,16 @@ debugger;
                 }
             })
         }
+    },
+    elementsActions: function () {
+        $(function () {
+            $("input[type=button][value=entry]").on("click", function () {
+                Main.startPage.entry($('#login').val(), $('#password').val());
+            });
+            $('a:contains("registration")').on("click", function(){
+                Main.renderPage(Main.registrationPage);
+            });
+        });
     }
-
 };
 
